@@ -662,6 +662,13 @@ const cmc200 = {
       symbol: '1INCH',
       name: '1INCH Token',
       decimals: 18
+    },
+    {
+      chainId: 1,
+      address: '0x056fd409e1d7a124bd7017459dfea2f387b6d5cd',
+      symbol: 'GUSD',
+      name: 'Gemini USD',
+      decimals: 2
     }
   ],
   logoURI: 'ipfs://QmQAGtNJ2rSGpnP6dh6PPKNSmZL8RTZXmgFwgTdy5Nz5mx'
