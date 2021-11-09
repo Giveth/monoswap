@@ -634,6 +634,34 @@ const cmc200 = {
       symbol: 'IDEX',
       name: 'IDEX',
       decimals: 18
+    },
+    {
+      chainId: 1,
+      address: '0x5dd57da40e6866c9fcc34f4b6ddc89f1ba740dfe',
+      symbol: 'BRIGHT',
+      name: 'BrightID',
+      decimals: 18
+    },
+    {
+      chainId: 1,
+      address: '0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e',
+      symbol: 'YFI',
+      name: 'yearn.finance',
+      decimals: 18
+    },
+    {
+      chainId: 1,
+      address: '0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE',
+      symbol: 'SHIB',
+      name: 'SHIBA INU',
+      decimals: 18
+    },
+    {
+      chainId: 1,
+      address: '0x111111111117dc0aa78b770fa6a738034120c302',
+      symbol: '1INCH',
+      name: '1INCH Token',
+      decimals: 18
     }
   ],
   logoURI: 'ipfs://QmQAGtNJ2rSGpnP6dh6PPKNSmZL8RTZXmgFwgTdy5Nz5mx'
@@ -739,6 +767,34 @@ export const xDaiTokenList = [
     address: '0xc60e38C6352875c051B481Cbe79Dd0383AdB7817',
     symbol: 'XNODE',
     name: 'dAppNode on xDAI',
+    decimals: 18
+  },
+  {
+    chainId: 100,
+    address: '0x38Fb649Ad3d6BA1113Be5F57B927053E97fC5bF7',
+    symbol: 'XCOMB',
+    name: 'xDAI Native Comb',
+    decimals: 18
+  },
+  {
+    chainId: 100,
+    address: '0xb0C5f3100A4d9d9532a4CfD68c55F1AE8da987Eb',
+    symbol: 'HAUS',
+    name: 'DAOhaus',
+    decimals: 18
+  },
+  {
+    chainId: 100,
+    address: '0x21a42669643f45Bc0e086b8Fc2ed70c23D67509d',
+    symbol: 'FOX',
+    name: 'Fox',
+    decimals: 18
+  },
+  {
+    chainId: 100,
+    address: '0x83FF60E2f93F8eDD0637Ef669C69D5Fb4f64cA8E',
+    symbol: 'BRIGHT',
+    name: 'Bright on xDAI',
     decimals: 18
   }
 ]
