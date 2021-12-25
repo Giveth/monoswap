@@ -14,6 +14,13 @@ const cmc200 = {
   tokens: [
     {
       chainId: 1,
+      name: "Giveth Token",
+      symbol: "GIV",
+      address: "0x900db999074d9277c5da2a43f252d74366230da0",
+      decimals: 18,
+    },
+    {
+      chainId: 1,
       address: "0x417ffdbc285dd2c4dc00937798ab901634137caa",
       symbol: "BLFI",
       name: "BlackFisk",
@@ -909,6 +916,13 @@ export const ropstenTokenList = [
 ];
 
 export const xDaiTokenList = [
+  {
+    chainId: 100,
+    name: "Giveth Token",
+    symbol: "GIV",
+    address: "0x4f4F9b8D5B4d0Dc10506e5551B0513B61fD59e75",
+    decimals: 18,
+  },
   {
     chainId: 100,
     address: "0x71850b7E9Ee3f13Ab46d67167341E4bDc905Eef9",

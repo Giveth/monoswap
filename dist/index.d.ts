@@ -30,9 +30,9 @@ export declare function getProvider(network: any): ethers.ethers.providers.JsonR
 export declare function getNetworkFromChainId(chainId: number): "xdaiChain" | "mainnet" | "ropstem" | "bsc";
 export declare function getOurTokenList(): {
     chainId: number;
-    address: string;
-    symbol: string;
     name: string;
+    symbol: string;
+    address: string;
     decimals: number;
 }[];
 export declare function getTokenPrices(symbol: string, baseSymbols: string[], chainId: number): Promise<number[]>;
@@ -50,9 +50,9 @@ export declare function getTokenPriceFromAddress(address: string, baseSymbol: st
  */
 export declare function getTokenFromList(symbol: string, chainId: number): {
     chainId: number;
-    address: string;
-    symbol: string;
     name: string;
+    symbol: string;
+    address: string;
     decimals: number;
 };
 export declare function getPairFromAddresses(addresses: string[], chainId: number): Promise<any>;

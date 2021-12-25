@@ -7,15 +7,15 @@ export declare const ropstenTokenList: {
 }[];
 export declare const xDaiTokenList: {
     chainId: number;
-    address: string;
-    symbol: string;
     name: string;
+    symbol: string;
+    address: string;
     decimals: number;
 }[];
 export declare const allTokens: {
     chainId: number;
-    address: string;
-    symbol: string;
     name: string;
+    symbol: string;
+    address: string;
     decimals: number;
 }[];
