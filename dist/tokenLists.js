@@ -24,6 +24,13 @@ const cmc200 = {
         },
         {
             chainId: 1,
+            name: "CR Coin",
+            symbol: "CRC",
+            address: "0xfb19c03a02a519a44542343803f3d42578cbc243",
+            decimals: 8,
+        },
+        {
+            chainId: 1,
             address: "0x417ffdbc285dd2c4dc00937798ab901634137caa",
             symbol: "BLFI",
             name: "BlackFisk",
