@@ -5,7 +5,7 @@ interface token {
     name: string;
     decimals: number;
 }
-declare type SwapToken = {
+type SwapToken = {
     decimals: number;
     symbol: string;
     name: string;

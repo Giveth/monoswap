@@ -901,6 +901,13 @@ const cmc200 = {
       name: "Fetch",
       decimals: 18,
     },
+    {
+      chainId: 1,
+      address: "0xf0f9d895aca5c8678f706fb8216fa22957685a13",
+      symbol: "CULT",
+      name: "Cult DAO",
+      decimals: 18,
+    },
   ],
   logoURI: "ipfs://QmQAGtNJ2rSGpnP6dh6PPKNSmZL8RTZXmgFwgTdy5Nz5mx",
 };

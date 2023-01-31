@@ -1,11 +1,11 @@
-declare type token = {
+type token = {
     symbol: string;
 };
-declare type pair = {
+type pair = {
     token0: token;
     token1: token;
 };
-declare type swap = {
+type swap = {
     amount0In: string;
     amount0Out: string;
     amount1In: string;
