@@ -22,6 +22,6 @@
   "rules": {
     "semi": "error",
     "prettier/prettier": ["error", {"singleQuote": true}]
-
-  }
+  },
+  "ignorePatterns": ["node_modules/", "dist/"]
 }
