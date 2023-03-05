@@ -1,7 +1,7 @@
 {
-  "name": "monoswap",
+  "name": "@giveth/monoswap",
   "version": "0.3.16",
-  "description": "",
+  "description": "A single SDK that wraps the uniswap SDK, the 1hive honeyswap SDK, and pancakeswap SDK.",
   "main": "dist/index.js",
   "dependencies": {
     "@bscswap/sdk": "^3.0.15",
@@ -19,7 +19,8 @@
     "npm": "^7.9.0"
   },
   "devDependencies": {
-    "@types/mocha": "^8.2.2"
+    "@types/mocha": "^8.2.2",
+    "nodemon": "^2.0.21"
   },
   "scripts": {
     "test": "nodemon -r esbuild-runner/register --watch . --exec 'mocha -r esbuild-runner/register price.spec.ts'",
