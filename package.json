@@ -20,7 +20,8 @@
   },
   "devDependencies": {
     "@types/mocha": "^8.2.2",
-    "nodemon": "^2.0.21"
+    "nodemon": "^2.0.21",
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "test": "nodemon -r esbuild-runner/register --watch . --exec 'mocha -r esbuild-runner/register price.spec.ts'",
