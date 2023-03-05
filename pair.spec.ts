@@ -1,6 +1,4 @@
-var assert = require('assert')
-import { getPairFromSymbols } from './index'
-import { getTokenPriceFromEthPrice } from './index'
+import { getTokenPriceFromEthPrice } from './index';
 
 describe('Array', function () {
   describe('#indexOf()', function () {
@@ -11,15 +9,15 @@ describe('Array', function () {
       // } catch (e) {
       //   console.error('Pair doesnt exist')
       // }
-      const nowStamp = Date.now()
-      console.log(`nowStamp ---> : ${nowStamp}`)
+      const nowStamp = Date.now();
+      console.log(`nowStamp ---> : ${nowStamp}`);
       const priceUsd = await getTokenPriceFromEthPrice(
         'PAN',
         'USD',
         1,
         nowStamp
-      )
-      console.log(`priceUsd ---> : ${priceUsd}`)
-    })
-  })
-})
+      );
+      console.log(`priceUsd ---> : ${priceUsd}`);
+    });
+  });
+});
