@@ -3,6 +3,10 @@
   "version": "0.3.16",
   "description": "A single SDK that wraps the uniswap SDK, the 1hive honeyswap SDK, and pancakeswap SDK.",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Giveth/monoswap.git"
+  },
   "dependencies": {
     "@bscswap/sdk": "^3.0.15",
     "@pancakeswap-libs/sdk": "^1.0.1",
