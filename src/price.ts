@@ -1,3 +1,5 @@
+import SdkV2 from '@/src/sdk/sdkV2';
+
 type token = {
   symbol: string;
 };
@@ -62,4 +64,32 @@ export function getActionFromSwap(swap: swap, subject: string) {
     throw new Error(`Invalid action from swap ${JSON.stringify(swap)}`);
   }
   return action;
+}
+
+const mainnetSdkV2 = new SdkV2(1);
+
+export async function convertPriceUsdToEth(priceInUsd, timeStamp) {
+  const priceEthUsdAtTime: number = await mainnetSdkV2.getPriceAtTime(
+    'ETH',
+    'USDT',
+    timeStamp
+  );
+  const usdPerEth = 1 / priceEthUsdAtTime;
+
+  const priceEth = priceInUsd / usdPerEth;
+
+  return priceEth;
+}
+
+export async function convertPriceEthToUsd(priceInEth, timeStamp) {
+  const priceEthUsdAtTime: number = await mainnetSdkV2.getPriceAtTime(
+    'ETH',
+    'USDT',
+    timeStamp
+  );
+
+  const usdPerEth = 1 / priceEthUsdAtTime;
+  const priceEth = priceInEth * usdPerEth;
+
+  return priceEth;
 }

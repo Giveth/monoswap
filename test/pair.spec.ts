@@ -1,4 +1,4 @@
-import { getTokenPriceFromEthPrice } from './index';
+import SdkV2 from '../src/sdk/sdkV2';
 
 describe('Array', function () {
   describe('#indexOf()', function () {
@@ -11,10 +11,10 @@ describe('Array', function () {
       // }
       const nowStamp = Date.now();
       console.log(`nowStamp ---> : ${nowStamp}`);
-      const priceUsd = await getTokenPriceFromEthPrice(
+      const sdkV2 = new SdkV2(1);
+      const priceUsd = await sdkV2.getTokenPriceFromNativeTokenPrice(
         'PAN',
         'USD',
-        1,
         nowStamp
       );
       console.log(`priceUsd ---> : ${priceUsd}`);

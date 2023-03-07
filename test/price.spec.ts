@@ -1,11 +1,10 @@
-import { getPriceFromSwap, getActionFromSwap } from './price';
+import assert from 'assert';
 import {
   convertPriceUsdToEth,
-  getPairFromAddresses,
-  convertPriceEthToUsd,
-  getPriceAtTime,
-} from './index';
-import assert from 'assert';
+  getActionFromSwap,
+  getPriceFromSwap,
+} from '@/src/price';
+import SdkV2 from '@/src/sdk/sdkV2';
 
 const swap = {
   amount0In: '0.001443376148615378',
@@ -106,8 +105,8 @@ describe('Test something', function () {
     const usdcAddress = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48';
     const wethAddress = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2';
     const addresses = [usdcAddress, wethAddress];
-    const chainId = 1;
-    const pair = await getPairFromAddresses(addresses, chainId);
+    const sdkV2 = new SdkV2(1);
+    const pair = await sdkV2.getPairFromAddresses(addresses);
 
     assert.equal(pair.tokenAmounts[0].currency.symbol, 'USDC');
     assert.equal(pair.tokenAmounts[1].currency.symbol, 'WETH');
@@ -124,12 +123,13 @@ describe('Convert', function () {
     // console.log(`priceHnyWxDai : ${JSON.stringify(priceHnyWxDai, null, 2)}`)
     // assert.equal(priceHnyWxDai, 0.017085662902985275)
 
-    const priceAtTimeUni = await getPriceAtTime('UNI', 'ETH', 1615402064, 1);
+    const sdkV2 = new SdkV2(1);
+    const priceAtTimeUni = await sdkV2.getPriceAtTime('UNI', 'ETH', 1615402064);
 
     console.log(`priceAtTimeUni : ${JSON.stringify(priceAtTimeUni, null, 2)}`);
     assert.equal(priceAtTimeUni, 0.017085662902985275);
 
-    const priceAtTimePan = await getPriceAtTime('PAN', 'ETH', 1615402064, 1);
+    const priceAtTimePan = await sdkV2.getPriceAtTime('PAN', 'ETH', 1615402064);
 
     console.log(`priceAtTimePan : ${JSON.stringify(priceAtTimePan, null, 2)}`);
     assert.equal(priceAtTimePan, 0.00004538174328413723);
@@ -144,7 +144,8 @@ describe('Convert', function () {
     // console.log(`priceHnyWxDai : ${JSON.stringify(priceHnyWxDai, null, 2)}`)
     // assert.equal(priceHnyWxDai, 0.017085662902985275)
 
-    const priceAtTimeUni = await getPriceAtTime('DAI', 'ETH', 1615402064, 1);
+    const sdkV2 = new SdkV2(1);
+    const priceAtTimeUni = await sdkV2.getPriceAtTime('DAI', 'ETH', 1615402064);
 
     console.log(`priceAtTimeUni : ${JSON.stringify(priceAtTimeUni, null, 2)}`);
     assert.equal(priceAtTimeUni, 0.0005435233394152087);

@@ -11,7 +11,10 @@
     "forceConsistentCasingInFileNames": false,
     "allowJs":true,
     "experimentalDecorators": true,
-    "declaration": true
+    "declaration": true,
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
-  "exclude": ["dist", "node_modules", "**/*.spec.ts", "**/*.js"]
+  "exclude": ["dist", "node_modules", "**/*.js"]
 }
