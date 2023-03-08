@@ -1,3 +1,4 @@
+/* eslint-disable */
 const axios = require('axios')
 
 //only returns 100 or 1000:
@@ -26506,7 +26507,7 @@ const honeyswapPairs = {
 
 //All seem to pass through a central router WAult contract - 0xd48745e39bbed146eec15b79cbf964884f9877c2
 //For example: https://bscscan.com/tx/0x1b2dd56bd3badea827debe134380491a8b9e4026eff4e4af2abcf727913fb800
-//For now will run with that address and the pair appended 
+//For now will run with that address and the pair appended
 
 const waultSwapPairs = {
   data: {
@@ -26529,7 +26530,7 @@ const waultSwapPairs = {
         reserve0: '0',
         reserve1: '0',
         reserveUSD: '0',
-        token0Price: '0',     
+        token0Price: '0',
         token1Price: '0',
         trackedReserveETH: '0',
         txCount: '0',

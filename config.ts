@@ -1,52 +1,42 @@
-import * as dotenv from 'dotenv'
+import * as dotenv from 'dotenv';
 
-dotenv.config()
+dotenv.config();
 
-const envVars: string[] = [
-  'ETHEREUM_NODE_ID',
-  'XDAI_NODE_HTTP_URL',
-  'MAINNET_NODE_HTTP_URL',
-  'XDAI_NODE_WS_URL',
-  'MAINNET_NODE_WS_URL'
-]
-
-// type requiredOptions = {
-//   [key: string]: string
-// }
+const envVars: string[] = ['ETHEREUM_NODE_ID', 'XDAI_NODE_HTTP_URL'];
 
 interface requiredEnv {
   //SOCKET_PORT: string
-  [key: string]: string | undefined
+  [key: string]: string | undefined;
 }
 
 class Config {
-  env: requiredEnv
+  env: requiredEnv;
 
-  constructor (envFile: requiredEnv) {
-    this.env = envFile
-    this.validateEnv(envFile)
+  constructor(envFile: requiredEnv) {
+    this.env = envFile;
+    this.validateEnv(envFile);
   }
 
   //Have this - replace it!
-  validateEnv (envFile: requiredEnv) {
+  validateEnv(envFile: requiredEnv) {
     envVars.forEach((envVar: any) => {
       if (envFile[envVar]) {
-        this.env[envVar] = envFile[envVar]
+        this.env[envVar] = envFile[envVar];
         // console.log(`envVar ---> : ${this[envVar]}`)
       } else {
-        throw new Error(`Need to provide a ${envVar} in the .env`)
+        throw new Error(`Need to provide a ${envVar} in the .env`);
       }
-    })
+    });
   }
 
-  get (envVar: string): string | number | undefined {
+  get(envVar: string): string | number | undefined {
     if (!this.env[envVar]) {
-      throw new Error(`${envVar} is an invalid env variable`)
+      throw new Error(`${envVar} is an invalid env variable`);
     }
-    return this.env[envVar]
+    return this.env[envVar];
   }
 }
 
-const config = new Config(process.env)
+const config = new Config(process.env);
 
-export default config
+export default config;
