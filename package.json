@@ -31,6 +31,7 @@
     "nodemon": "^2.0.21",
     "prettier": "^2.8.1",
     "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.2",
     "tsconfig-paths": "^4.1.2",
     "typescript": "^4.9.5"
   },
@@ -40,7 +41,7 @@
     "test:polygon": "mocha test/polygon.test.ts",
     "test:price": "mocha test/price.spec.ts",
     "tp": "mocha test/pair.spec.ts",
-    "bp": "tsc && npm publish"
+    "bp": "tsc && tsc-alias && npm publish"
   },
   "keywords": [],
   "author": "",
