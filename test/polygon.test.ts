@@ -43,4 +43,14 @@ describe('Polygon network support', async () => {
       'Prices should be reverse of each other'
     );
   });
+
+  it('should return close eth value on polygon', async () => {
+    const [ethPricePolygon] = await getTokenPrices('ETH', ['USDT'], 137);
+    const [ethPriceMainnet] = await getTokenPrices('ETH', ['USDT'], 1);
+    expect(ethPricePolygon).closeTo(
+      ethPriceMainnet,
+      1,
+      'ETH price should be close to mainnet'
+    );
+  });
 });
