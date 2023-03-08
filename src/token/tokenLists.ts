@@ -1081,6 +1081,13 @@ const polygonTokenList: Token[] = [
     name: 'Tether USD',
     decimals: 6,
   },
+  {
+    chainId: 137,
+    address: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
+    symbol: 'WETH',
+    name: 'Wrapped Ether',
+    decimals: 18,
+  },
 ];
 
 export const allTokens: Token[] = cmc200.tokens
