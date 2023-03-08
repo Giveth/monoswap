@@ -76,6 +76,10 @@ export class SdkV3 implements ISdk {
       throw new Error('Token not found');
     }
 
+    if (symbolInfo.address === baseSymbolInfo.address) {
+      return 1;
+    }
+
     const symbolToken = new Token(
       this.chainId,
       symbolInfo.address,

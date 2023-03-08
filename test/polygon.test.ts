@@ -53,4 +53,15 @@ describe('Polygon network support', async () => {
       'ETH price should be close to mainnet'
     );
   });
+
+  it('should return 1 for MATIC/WMATIC', async () => {
+    const [firstPrice] = await getTokenPrices('MATIC', ['MATIC'], 137);
+    const [secondPrice] = await getTokenPrices('MATIC', ['WMATIC'], 137);
+    const [thirdPrice] = await getTokenPrices('WMATIC', ['MATIC'], 137);
+    const [forthPrice] = await getTokenPrices('WMATIC', ['WMATIC'], 137);
+
+    expect([firstPrice, secondPrice, thirdPrice, forthPrice]).to.deep.equal([
+      1, 1, 1, 1,
+    ]);
+  });
 });
