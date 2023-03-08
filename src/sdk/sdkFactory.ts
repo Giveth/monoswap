@@ -1,4 +1,5 @@
 import SdkV2 from '@/src/sdk/sdkV2';
+import { SdkV3 } from '@/src/sdk/sdkV3';
 
 export enum CHAIN_ID {
   MAINNET = 1,
@@ -15,14 +16,13 @@ export interface ISdk {
   getTokenPrice(symbol: string, baseSymbol: string): Promise<number>;
 }
 
-export class SdkFactory {
-  static chainToSdk: Map<number, ISdk> = new Map();
-  public static getSdk(chainId: number): ISdk {
+export class SdkV2Factory {
+  static chainToSdk: Map<number, SdkV2> = new Map();
+
+  public static getSdkV2(chainId: number): SdkV2 {
     if (!this.chainToSdk.has(chainId)) {
-      let sdk: ISdk;
+      let sdk: SdkV2;
       switch (chainId) {
-        case CHAIN_ID.POLYGON:
-          break;
         case CHAIN_ID.MAINNET:
         case CHAIN_ID.XDAI:
         case CHAIN_ID.BSC:
@@ -34,8 +34,40 @@ export class SdkFactory {
       }
       this.chainToSdk.set(chainId, sdk);
     }
-
     return this.chainToSdk.get(chainId);
+  }
+}
+
+export class SdkV3Factory {
+  static chainToSdk: Map<number, SdkV3> = new Map();
+
+  public static getSdkV3(chainId: number): SdkV3 {
+    if (!this.chainToSdk.has(chainId)) {
+      let sdk: SdkV3;
+      switch (chainId) {
+        case CHAIN_ID.POLYGON:
+          sdk = new SdkV3(chainId);
+          break;
+      }
+      this.chainToSdk.set(chainId, sdk);
+    }
+    return this.chainToSdk.get(chainId);
+  }
+}
+
+export class SdkFactory {
+  public static getSdk(chainId: number): ISdk {
+    switch (chainId) {
+      case CHAIN_ID.POLYGON:
+        return SdkV3Factory.getSdkV3(chainId);
+      case CHAIN_ID.MAINNET:
+      case CHAIN_ID.XDAI:
+      case CHAIN_ID.BSC:
+      case CHAIN_ID.GOERLI:
+      case CHAIN_ID.KOVAN:
+      default:
+        return SdkV2Factory.getSdkV2(chainId);
+    }
   }
 }
 

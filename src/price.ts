@@ -1,29 +1,30 @@
 import SdkV2 from '@/src/sdk/sdkV2';
+import { CHAIN_ID, SdkV2Factory } from '@/src/sdk/sdkFactory';
 
-type token = {
+type PairToken = {
   symbol: string;
 };
-type pair = {
-  token0: token;
-  token1: token;
+type Pair = {
+  token0: PairToken;
+  token1: PairToken;
 };
-type swap = {
+type Swap = {
   amount0In: string;
   amount0Out: string;
   amount1In: string;
   amount1Out: string;
   amountUSD: string;
-  pair: pair;
+  pair: Pair;
   to: string;
 };
 
 /**
  *
  * @param swap
- * @param base return price in? ETH ? USD?
+ * @param baseSymbol return price in? ETH ? USD?
  * @returns
  */
-export function getPriceFromSwap(swap: swap, baseSymbol: string) {
+export function getPriceFromSwap(swap: Swap, baseSymbol: string) {
   const baseToken = swap.pair.token0.symbol === baseSymbol ? 0 : 1;
 
   let price = 0;
@@ -45,7 +46,7 @@ export function getPriceFromSwap(swap: swap, baseSymbol: string) {
   return price;
 }
 
-export function getActionFromSwap(swap: swap, subject: string) {
+export function getActionFromSwap(swap: Swap, subject: string) {
   const baseToken = swap.pair.token0.symbol === subject ? 0 : 1;
   let action = '';
   if (Number(swap.amount0In) > 0) {
@@ -66,10 +67,12 @@ export function getActionFromSwap(swap: swap, subject: string) {
   return action;
 }
 
-const mainnetSdkV2 = new SdkV2(1);
+const getMainnetSdkV2 = () => {
+  return SdkV2Factory.getSdkV2(CHAIN_ID.MAINNET);
+};
 
 export async function convertPriceUsdToEth(priceInUsd, timeStamp) {
-  const priceEthUsdAtTime: number = await mainnetSdkV2.getPriceAtTime(
+  const priceEthUsdAtTime: number = await getMainnetSdkV2().getPriceAtTime(
     'ETH',
     'USDT',
     timeStamp
@@ -82,7 +85,7 @@ export async function convertPriceUsdToEth(priceInUsd, timeStamp) {
 }
 
 export async function convertPriceEthToUsd(priceInEth, timeStamp) {
-  const priceEthUsdAtTime: number = await mainnetSdkV2.getPriceAtTime(
+  const priceEthUsdAtTime: number = await getMainnetSdkV2().getPriceAtTime(
     'ETH',
     'USDT',
     timeStamp

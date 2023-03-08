@@ -9,6 +9,7 @@
     "module": "commonjs",
     "sourceMap": true,
     "forceConsistentCasingInFileNames": false,
+    "resolveJsonModule": true,
     "allowJs":true,
     "experimentalDecorators": true,
     "declaration": true,

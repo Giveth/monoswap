@@ -1,3 +1,4 @@
+import { Token } from './token';
 /**
  * Source:
    const coinListUrl = 'https://wispy-bird-88a7.uniswap.workers.dev/?url=http://erc20.cmc.eth.link'
@@ -912,7 +913,7 @@ const cmc200 = {
   logoURI: 'ipfs://QmQAGtNJ2rSGpnP6dh6PPKNSmZL8RTZXmgFwgTdy5Nz5mx',
 };
 
-export const ropstenTokenList = [
+export const ropstenTokenList: Token[] = [
   {
     chainId: 3,
     address: '0x067eA48882E6D728A37acfd1535ec03f8E33794a',
@@ -929,7 +930,7 @@ export const ropstenTokenList = [
   },
 ];
 
-export const xDaiTokenList = [
+export const xDaiTokenList: Token[] = [
   {
     chainId: 100,
     name: 'Giveth Token',
@@ -1051,7 +1052,7 @@ export const xDaiTokenList = [
   },
 ];
 
-const polygonTokenList = [
+const polygonTokenList: Token[] = [
   {
     chainId: 137,
     address: '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
@@ -1082,7 +1083,7 @@ const polygonTokenList = [
   },
 ];
 
-export const allTokens = cmc200.tokens
+export const allTokens: Token[] = cmc200.tokens
   .concat(ropstenTokenList)
   .concat(xDaiTokenList)
   .concat(polygonTokenList);

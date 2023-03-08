@@ -1,9 +1,16 @@
 import { allTokens } from '@/src/token/tokenLists';
 
+export interface Token {
+  chainId: number;
+  address: string;
+  symbol: string;
+  name: string;
+  decimals: number;
+}
 /**
  * Get Token details
  */
-export function getTokenFromList(symbol: string, chainId: number) {
+export function getTokenFromList(symbol: string, chainId: number): Token {
   let inSymbol: string;
   switch (symbol.toUpperCase()) {
     case 'ETH':

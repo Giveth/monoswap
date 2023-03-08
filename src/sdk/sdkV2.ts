@@ -12,16 +12,8 @@ import {
 import { allTokens } from '@/src/token/tokenLists';
 import { fetchSwapForPair } from '@/theGraph';
 import { getPriceFromSwap } from '@/src/price';
-import { getTokenFromList } from '@/src/token/token';
+import { getTokenFromList, Token } from '@/src/token/token';
 import { getProvider } from '@/index';
-
-interface token {
-  chainId: number;
-  address: string;
-  symbol: string;
-  name: string;
-  decimals: number;
-}
 
 type SwapToken = {
   decimals: number;
@@ -69,7 +61,7 @@ export default class SdkV2 implements ISdk {
     return new this.sdk.Token(chainId, address, decimals, symbol, name);
   }
 
-  getSwapToken(token: token) {
+  getSwapToken(token: Token) {
     if (!token) throw new Error('Cannot swap a nothing');
     const { chainId, address, decimals, symbol, name } = token;
 
