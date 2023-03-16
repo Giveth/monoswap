@@ -6,13 +6,19 @@ import { CHAIN_ID, SdkFactory } from '@/src/sdk/sdkFactory';
 export { pairs as monoswapPairs } from './src/pairs/monoswapPairs';
 export { getTokenFromList } from '@/src/token/token';
 
-const INFURA_ID = config.get('ETHEREUM_NODE_ID') as string;
+const INFURA_ID = config.get('INFURA_API_KEY') as string;
 
 export function getProvider(network: number) {
-  if (network === CHAIN_ID.XDAI) {
-    return new ethers.providers.JsonRpcProvider(
-      config.get('XDAI_NODE_HTTP_URL').toString()
-    );
+  switch (network) {
+    case CHAIN_ID.XDAI:
+      return new ethers.providers.JsonRpcProvider();
+    case CHAIN_ID.POLYGON: {
+      const customPolygonRpcNode = config
+        .get('POLYGON_MAINNET_NODE_HTTP_URL')
+        .toString();
+      if (customPolygonRpcNode)
+        return new ethers.providers.JsonRpcProvider(customPolygonRpcNode);
+    }
   }
   return new ethers.providers.InfuraProvider(network, INFURA_ID);
 }
