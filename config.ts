@@ -1,5 +1,4 @@
 import * as dotenv from 'dotenv';
-import internal from 'stream';
 
 dotenv.config();
 
