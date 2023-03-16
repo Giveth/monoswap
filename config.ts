@@ -1,8 +1,17 @@
 import * as dotenv from 'dotenv';
+import internal from 'stream';
 
 dotenv.config();
 
-const envVars: string[] = ['ETHEREUM_NODE_ID', 'XDAI_NODE_HTTP_URL'];
+interface EnvVar {
+  key: string;
+  required?: boolean;
+}
+const requiredEnvVars: EnvVar[] = [
+  { key: 'INFURA_API_KEY', required: true },
+  { key: 'XDAI_NODE_HTTP_URL', required: true },
+  { key: 'POLYGON_MAINNET_NODE_HTTP_URL', required: false },
+];
 
 interface requiredEnv {
   //SOCKET_PORT: string
@@ -19,12 +28,13 @@ class Config {
 
   //Have this - replace it!
   validateEnv(envFile: requiredEnv) {
-    envVars.forEach((envVar: any) => {
-      if (envFile[envVar]) {
-        this.env[envVar] = envFile[envVar];
+    requiredEnvVars.forEach((envVar: EnvVar) => {
+      if (envFile[envVar.key]) {
+        this.env[envVar.key] = envFile[envVar.key];
         // console.log(`envVar ---> : ${this[envVar]}`)
       } else {
-        throw new Error(`Need to provide a ${envVar} in the .env`);
+        if (envVar.required)
+          throw new Error(`Need to provide a ${envVar.key} in the .env`);
       }
     });
   }
