@@ -11,7 +11,9 @@ const INFURA_ID = config.get('INFURA_API_KEY') as string;
 export function getProvider(network: number) {
   switch (network) {
     case CHAIN_ID.XDAI:
-      return new ethers.providers.JsonRpcProvider();
+      return new ethers.providers.JsonRpcProvider(
+        config.get('XDAI_NODE_HTTP_URL').toString()
+      );
     case CHAIN_ID.POLYGON: {
       const customPolygonRpcNode = config
         .get('POLYGON_MAINNET_NODE_HTTP_URL')
