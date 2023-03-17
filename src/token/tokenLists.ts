@@ -1112,7 +1112,7 @@ const polygonTokenList: Token[] = [
   {
     chainId: 137,
     address: '0x750e4C4984a9e0f12978eA6742Bc1c5D248f40ed',
-    symbol: 'AXLUSDC',
+    symbol: 'axlUSDC',
     name: 'Axelar USDC',
     decimals: 6,
   },
