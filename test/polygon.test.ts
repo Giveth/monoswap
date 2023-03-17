@@ -64,4 +64,11 @@ describe('Polygon network support', async () => {
       1, 1, 1, 1,
     ]);
   });
+
+  it('should return correct price for new token', async () => {
+    const token = 'AAVE';
+    const [price] = await getTokenPrices(token, ['USDC'], 137);
+    console.log({ [token]: price });
+    expect(price).to.gt(0, `${token} price should be greater than 0`);
+  });
 });
