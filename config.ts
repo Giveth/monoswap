@@ -14,12 +14,17 @@ const envVarConfis: EnvVarConfig[] = [
 ];
 
 interface EnvVar {
+  value?: string;
+  required: boolean;
+}
+
+interface EnvVars {
   //SOCKET_PORT: string
-  [key: string]: { value: string | undefined; required: boolean };
+  [key: string]: EnvVar;
 }
 
 class Config {
-  env: EnvVar;
+  env: EnvVars;
 
   constructor(envFile: { [key: string]: string | undefined }) {
     this.validateAndFillEnv(envFile);
@@ -27,19 +32,18 @@ class Config {
 
   //Have this - replace it!
   validateAndFillEnv(envFile: { [key: string]: string | undefined }) {
-    const env = {};
+    this.env = {};
     envVarConfis.forEach((envVar: EnvVarConfig) => {
       const { key, required } = envVar;
       if (envFile[key]) {
-        env[key] = { value: envFile[key], required: required };
+        this.env[key] = { value: envFile[key], required: required };
         // console.log(`envVar ---> : ${this[envVar]}`)
       } else {
         if (required)
           throw new Error(`Need to provide a ${envVar.key} in the .env`);
-        env[key] = { key: undefined, required: false };
+        this.env[key] = { value: undefined, required: false };
       }
     });
-    this.env = env;
   }
 
   get(envVar: string): string | number | undefined {
