@@ -14,12 +14,21 @@ export function getProvider(network: number) {
       return new ethers.providers.JsonRpcProvider(
         config.get('XDAI_NODE_HTTP_URL').toString()
       );
+    case CHAIN_ID.OPTIMISM: {
+      const customOptimismRpcNode = config
+        .get('OPTIMISM_NODE_HTTP_URL')
+        ?.toString();
+      if (customOptimismRpcNode)
+        return new ethers.providers.JsonRpcProvider(customOptimismRpcNode);
+      break;
+    }
     case CHAIN_ID.POLYGON: {
       const customPolygonRpcNode = config
         .get('POLYGON_MAINNET_NODE_HTTP_URL')
-        .toString();
+        ?.toString();
       if (customPolygonRpcNode)
         return new ethers.providers.JsonRpcProvider(customPolygonRpcNode);
+      break;
     }
   }
   return new ethers.providers.InfuraProvider(network, INFURA_ID);

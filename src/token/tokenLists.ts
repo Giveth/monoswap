@@ -1244,10 +1244,44 @@ const polygonTokenList: Token[] = [
   },
 ];
 
-export const allTokens: Token[] = cmc200.tokens
-  .concat(ropstenTokenList)
-  .concat(xDaiTokenList)
-  .concat(polygonTokenList);
+const optimismTokenList: Token[] = [
+  {
+    chainId: 10,
+    address: '0x4200000000000000000000000000000000000006',
+    symbol: 'WETH',
+    name: 'Wrapped Ether',
+    decimals: 18,
+  },
+  {
+    chainId: 10,
+    address: '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58',
+    symbol: 'USDT',
+    name: 'Tether',
+    decimals: 6,
+  },
+  {
+    chainId: 10,
+    address: '0x7F5c764cBc14f9669B88837ca1490cCa17c31607',
+    symbol: 'USDC',
+    name: 'USD Coin',
+    decimals: 6,
+  },
+  {
+    chainId: 10,
+    address: '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
+    symbol: 'DAI',
+    name: 'Dai',
+    decimals: 18,
+  },
+];
+
+export const allTokens: Token[] = [
+  ...cmc200.tokens,
+  ...ropstenTokenList,
+  ...xDaiTokenList,
+  ...polygonTokenList,
+  ...optimismTokenList,
+];
 
 // let tokenList
 // getTokenList().then(cmcList => {

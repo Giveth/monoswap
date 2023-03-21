@@ -6,6 +6,7 @@ export enum CHAIN_ID {
   ROPSTEN = 3,
   RINKEBY = 4,
   GOERLI = 5,
+  OPTIMISM = 10,
   KOVAN = 42,
   XDAI = 100,
   BSC = 56,
@@ -43,12 +44,7 @@ export class SdkV3Factory {
 
   public static getSdkV3(chainId: number): SdkV3 {
     if (!this.chainToSdk.has(chainId)) {
-      let sdk: SdkV3;
-      switch (chainId) {
-        case CHAIN_ID.POLYGON:
-          sdk = new SdkV3(chainId);
-          break;
-      }
+      const sdk = new SdkV3(chainId);
       this.chainToSdk.set(chainId, sdk);
     }
     return this.chainToSdk.get(chainId);
@@ -58,15 +54,16 @@ export class SdkV3Factory {
 export class SdkFactory {
   public static getSdk(chainId: number): ISdk {
     switch (chainId) {
-      case CHAIN_ID.POLYGON:
-        return SdkV3Factory.getSdkV3(chainId);
       case CHAIN_ID.MAINNET:
       case CHAIN_ID.XDAI:
       case CHAIN_ID.BSC:
       case CHAIN_ID.GOERLI:
       case CHAIN_ID.KOVAN:
-      default:
         return SdkV2Factory.getSdkV2(chainId);
+      case CHAIN_ID.OPTIMISM:
+      case CHAIN_ID.POLYGON:
+      default:
+        return SdkV3Factory.getSdkV3(chainId);
     }
   }
 }
