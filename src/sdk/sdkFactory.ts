@@ -1,5 +1,6 @@
 import SdkV2 from '@/src/sdk/sdkV2';
 import { SdkV3 } from '@/src/sdk/sdkV3';
+import { SdkCeloFactory } from '@/src/sdk/sdkCelo';
 
 export enum CHAIN_ID {
   MAINNET = 1,
@@ -11,6 +12,8 @@ export enum CHAIN_ID {
   XDAI = 100,
   BSC = 56,
   POLYGON = 137,
+  CELO = 42220,
+  ALFAJORES = 44787,
 }
 
 export interface ISdk {
@@ -60,6 +63,9 @@ export class SdkFactory {
       case CHAIN_ID.GOERLI:
       case CHAIN_ID.KOVAN:
         return SdkV2Factory.getSdkV2(chainId);
+      case CHAIN_ID.CELO:
+      case CHAIN_ID.ALFAJORES:
+        return SdkCeloFactory.getCeloSdk(chainId);
       case CHAIN_ID.OPTIMISM:
       case CHAIN_ID.POLYGON:
       default:

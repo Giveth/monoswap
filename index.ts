@@ -2,6 +2,7 @@ import config from './config';
 import { ethers } from 'ethers';
 import { allTokens } from './src/token/tokenLists';
 import { CHAIN_ID, SdkFactory } from '@/src/sdk/sdkFactory';
+import { CeloAlfajoresConfig, CeloMainnetConfig } from '@/src/sdk/celo/config';
 
 export { pairs as monoswapPairs } from './src/pairs/monoswapPairs';
 export { getTokenFromList } from '@/src/token/token';
@@ -29,6 +30,22 @@ export function getProvider(network: number) {
       if (customPolygonRpcNode)
         return new ethers.providers.JsonRpcProvider(customPolygonRpcNode);
       break;
+    }
+    case CHAIN_ID.CELO: {
+      const customCeloRpcNode = config
+        .get('CELO_MAINNET_NODE_HTTP_URL')
+        ?.toString();
+      return new ethers.providers.JsonRpcProvider(
+        customCeloRpcNode || CeloMainnetConfig.jsonRpcUrlPrimary
+      );
+    }
+    case CHAIN_ID.ALFAJORES: {
+      const customCeloAlfajoresRpcNode = config
+        .get('CELO_ALFAJORES_NODE_HTTP_URL')
+        ?.toString();
+      return new ethers.providers.JsonRpcProvider(
+        customCeloAlfajoresRpcNode || CeloAlfajoresConfig.jsonRpcUrlPrimary
+      );
     }
   }
   return new ethers.providers.InfuraProvider(network, INFURA_ID);

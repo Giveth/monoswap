@@ -40,6 +40,7 @@
     "test:mainnet": "mocha test/mainnet.test.ts",
     "test:polygon": "mocha test/polygon.test.ts",
     "test:optimism": "mocha test/optimism.test.ts",
+    "test:celo": "mocha test/celo.test.ts",
     "test:price": "mocha test/price.spec.ts",
     "tp": "mocha test/pair.spec.ts",
     "bp": "tsc && tsc-alias && npm publish"
