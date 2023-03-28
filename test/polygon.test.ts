@@ -1,5 +1,5 @@
 import { getTokenPrices } from '@/index';
-import { assert, expect } from 'chai';
+import { expect } from 'chai';
 
 describe('Polygon network support', async () => {
   it('should return the correct price for a token pair', async () => {

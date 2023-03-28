@@ -1275,6 +1275,23 @@ const optimismTokenList: Token[] = [
   },
 ];
 
+const celoTokenList: Token[] = [
+  {
+    chainId: 42220,
+    address: '0x765DE816845861e75A25fCA122bb6898B8B1282a',
+    symbol: 'cUSD',
+    name: 'Celo Dollar',
+    decimals: 18,
+  },
+  {
+    chainId: 42220,
+    address: '0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73',
+    symbol: 'cEUR',
+    name: 'Celo Euro',
+    decimals: 18,
+  },
+];
+
 export const allTokens: Token[] = [
   ...cmc200.tokens,
   ...ropstenTokenList,
