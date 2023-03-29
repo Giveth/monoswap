@@ -25,7 +25,8 @@ export function getContract(c: CeloContract, chainId: number) {
   if (cachedContract) return cachedContract;
   const address = getCeloConfig(chainId).contractAddresses[c];
   const abi = getContractAbi(c);
-  const contract = new Contract(address, abi, getProvider(chainId));
+  const provider = getProvider(chainId);
+  const contract = new Contract(address, abi, provider);
   contractCache[cacheKey] = contract;
   return contract;
 }
