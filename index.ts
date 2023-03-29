@@ -36,7 +36,7 @@ export function getProvider(network: number) {
         .get('CELO_MAINNET_NODE_HTTP_URL')
         ?.toString();
       return new ethers.providers.JsonRpcProvider(
-        customCeloRpcNode || CeloMainnetConfig.jsonRpcUrlPrimary
+        customCeloRpcNode || `https://celo-mainnet.infura.io/v3/${INFURA_ID}`
       );
     }
     case CHAIN_ID.ALFAJORES: {
@@ -44,7 +44,8 @@ export function getProvider(network: number) {
         .get('CELO_ALFAJORES_NODE_HTTP_URL')
         ?.toString();
       return new ethers.providers.JsonRpcProvider(
-        customCeloAlfajoresRpcNode || CeloAlfajoresConfig.jsonRpcUrlPrimary
+        customCeloAlfajoresRpcNode ||
+          `https://celo-alfajores.infura.io/v3/${INFURA_ID}`
       );
     }
   }
