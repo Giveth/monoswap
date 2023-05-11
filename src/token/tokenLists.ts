@@ -1335,15 +1335,29 @@ const celoTokenList: Token[] = [
   {
     chainId: 42220,
     address: '0x765DE816845861e75A25fCA122bb6898B8B1282a',
-    symbol: 'cUSD',
+    symbol: 'CUSD',
     name: 'Celo Dollar',
     decimals: 18,
   },
   {
     chainId: 42220,
     address: '0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73',
-    symbol: 'cEUR',
+    symbol: 'CEUR',
     name: 'Celo Euro',
+    decimals: 18,
+  },
+  {
+    chainId: 42220,
+    address: '0x37f750B7cC259A2f741AF45294f6a16572CF5cAd',
+    symbol: 'USDC',
+    name: 'USD Coin',
+    decimals: 6,
+  },
+  {
+    chainId: 42220,
+    address: '0x66803FB87aBd4aaC3cbB3fAd7C3aa01f6F3FB207',
+    symbol: 'WETH',
+    name: 'Wrapped Ether',
     decimals: 18,
   },
 ];
@@ -1354,6 +1368,7 @@ export const allTokens: Token[] = [
   ...xDaiTokenList,
   ...polygonTokenList,
   ...optimismTokenList,
+  ...celoTokenList,
 ];
 
 // let tokenList
