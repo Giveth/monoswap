@@ -28,9 +28,6 @@ interface CeloTokens {
   cUSD: CeloToken;
   cEUR: CeloToken;
   cREAL: CeloToken;
-  USDTet: CeloToken;
-  USDC: CeloToken;
-  WBTC: CeloToken;
 }
 
 export const getCeloConfig = (chainId: number): CeloConfig => {
@@ -84,34 +81,6 @@ const _getCeloTokens = (chainId: number): CeloTokens => {
       decimals: 18,
       chainId: config.chainId,
       exchangeAddress: config.contractAddresses.ExchangeBRL,
-      sortOrder: 40,
-    },
-    USDTet: {
-      symbol: 'USDTet',
-      name: 'Tether',
-      // color: Color.primaryGreen,
-      address: config.contractAddresses.USDTet,
-      decimals: 6,
-      chainId: config.chainId,
-      exchangeAddress: '',
-      sortOrder: 40,
-    },
-    USDC: {
-      symbol: 'USDC',
-      name: 'USDC',
-      address: config.contractAddresses.USDC,
-      decimals: 6,
-      chainId: config.chainId,
-      exchangeAddress: config.contractAddresses.USDCPool,
-      sortOrder: 40,
-    },
-    WBTC: {
-      symbol: 'WBTC',
-      name: 'Wrapped BTC',
-      address: config.contractAddresses.WrappedBTC,
-      decimals: 8,
-      chainId: config.chainId,
-      exchangeAddress: config.contractAddresses.Exchange,
       sortOrder: 40,
     },
   };
