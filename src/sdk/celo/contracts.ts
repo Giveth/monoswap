@@ -10,7 +10,7 @@ import { ABI as GovernanceAbi } from './ABIs/governance';
 import { ABI as LockedGoldAbi } from './ABIs/lockedGold';
 import { ABI as SortedOraclesAbi } from './ABIs/sortedOracles';
 import { ABI as ValidatorsAbi } from './ABIs/validators';
-import { ABI as BridgeAbi } from './ABIs/bridge';
+import { ABI as StableTokenAbi } from './ABIs/stableToken';
 import { getProvider } from '@/index';
 import { CeloContract } from '@/src/sdk/celo/config';
 import { getCeloConfig } from '@/src/sdk/celo/tokens';
@@ -72,7 +72,7 @@ function getContractAbi(c: CeloContract) {
     case CeloContract.StableToken:
     case CeloContract.StableTokenEUR:
     case CeloContract.StableTokenBRL:
-      return BridgeAbi;
+      return StableTokenAbi;
     case CeloContract.Validators:
       return ValidatorsAbi;
     default:
