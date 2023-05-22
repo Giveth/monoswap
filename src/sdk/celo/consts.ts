@@ -64,3 +64,6 @@ export const IPFS_PROVIDER_BASEURL = 'https://cloudflare-ipfs.com/ipfs/';
 
 export const DONATION_ADDRESS = '0xE3791A4a231D026c9567BEDbAb977617f2900383'; // for receiving donations
 export const RAMP_PROJECT_ID = 'jg2gy6y7o35np2w7npw9jnszaz962z3dxhpso4hq';
+
+export const UNIV3_CELO_FACTORY_ADDRESS =
+  '0xafe208a311b21f13ef87e33a90049fc17a7acdec';

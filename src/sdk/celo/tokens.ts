@@ -136,14 +136,8 @@ export const getCeloNativeTokens = (chainId: number): CeloToken[] => {
   return [CELO, cUSD, cEUR, cREAL];
 };
 
-export const getCeloBridgedTokens = (chainId: number): CeloToken[] => {
-  const { USDTet, USDC } = getCeloTokens(chainId);
-  return [USDTet, USDC];
-};
-
 export const getNativeTokenByAddress = (chainId: number) => {
-  const { CELO, cUSD, cEUR, cREAL, USDTet, USDC, WBTC } =
-    getCeloTokens(chainId);
+  const { CELO, cUSD, cEUR, cREAL } = getCeloTokens(chainId);
   return {
     [CELO.address]: CELO,
     [cUSD.address]: cUSD,
