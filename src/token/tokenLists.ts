@@ -1335,15 +1335,36 @@ const celoTokenList: Token[] = [
   {
     chainId: 42220,
     address: '0x765DE816845861e75A25fCA122bb6898B8B1282a',
-    symbol: 'cUSD',
+    symbol: 'CUSD',
     name: 'Celo Dollar',
     decimals: 18,
   },
   {
     chainId: 42220,
     address: '0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73',
-    symbol: 'cEUR',
+    symbol: 'CEUR',
     name: 'Celo Euro',
+    decimals: 18,
+  },
+  {
+    chainId: 42220,
+    address: '0x27cd006548df7c8c8e9fdc4a67fa05c2e3ca5cf9',
+    symbol: 'PLASTIK',
+    name: 'Plastiks',
+    decimals: 9,
+  },
+  {
+    chainId: 42220,
+    address: '0x9995cc8F20Db5896943Afc8eE0ba463259c931ed',
+    symbol: 'ETHIX',
+    name: 'EthicHub',
+    decimals: 18,
+  },
+  {
+    chainId: 42220,
+    address: '0x02De4766C272abc10Bc88c220D214A26960a7e92',
+    symbol: 'NCT',
+    name: 'Toucan Protocol',
     decimals: 18,
   },
 ];
@@ -1354,6 +1375,7 @@ export const allTokens: Token[] = [
   ...xDaiTokenList,
   ...polygonTokenList,
   ...optimismTokenList,
+  ...celoTokenList,
 ];
 
 // let tokenList

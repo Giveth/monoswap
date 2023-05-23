@@ -6,6 +6,8 @@ import { Token } from '@uniswap/sdk-core';
 import { ethers } from 'ethers';
 import { getProvider } from '@/index';
 import IUniswapV3PoolABI from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json';
+import { CeloChain } from './celo/config';
+import { UNIV3_CELO_FACTORY_ADDRESS } from './celo/consts';
 
 interface PoolInfo {
   token0: string;
@@ -25,9 +27,11 @@ export class SdkV3 implements ISdk {
     if (!provider) {
       throw new Error('No provider');
     }
-
     const currentPoolAddress = UniSdkV3.computePoolAddress({
-      factoryAddress: UniSdkV3.FACTORY_ADDRESS,
+      factoryAddress:
+        this.chainId === CeloChain.Mainnet
+          ? UNIV3_CELO_FACTORY_ADDRESS
+          : UniSdkV3.FACTORY_ADDRESS,
       tokenA,
       tokenB,
       fee: FeeAmount.MEDIUM,
@@ -94,7 +98,6 @@ export class SdkV3 implements ISdk {
       baseSymbolInfo.symbol,
       baseSymbolInfo.name
     );
-
     try {
       const pool = await this.getPool(symbolToken, baseSymnolToken);
       const route = new UniSdkV3.Route([pool], symbolToken, baseSymnolToken);

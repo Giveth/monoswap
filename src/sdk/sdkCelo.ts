@@ -1,5 +1,7 @@
 import { ISdk } from '@/src/sdk/sdkFactory';
+import { SdkV3 } from './sdkV3';
 import { CeloToken, getCeloNativeTokens } from '@/src/sdk/celo/tokens';
+import { getTokenFromList } from '@/src/token/token';
 import { ExchangeRate } from '@/src/sdk/celo/types';
 import { BigNumber, BigNumberish, FixedNumber } from 'ethers';
 import { MAX_EXCHANGE_SPREAD, WEI_PER_UNIT } from '@/src/sdk/celo/consts';
@@ -47,12 +49,13 @@ export class SdkCelo implements ISdk {
     };
   }
 
-  getToken(symbol: string): CeloToken | undefined {
+  getNativeToken(symbol: string): CeloToken | undefined {
     const celoNativeToken = getCeloNativeTokens(this.chainId);
     return celoNativeToken.find(
       (token) => token.symbol.toLowerCase() === symbol.toLowerCase()
     );
   }
+
   calcSimpleExchangeRate(
     amountInWei: BigNumberish,
     buyBucket: string,
@@ -101,7 +104,7 @@ export class SdkCelo implements ISdk {
   }
 
   async getStableTokenPriceToCelo(symbol: string): Promise<number> {
-    const token = this.getToken(symbol.toLowerCase());
+    const token = this.getNativeToken(symbol.toLowerCase());
     if (token) {
       const { celoBucket, stableBucket, spread } =
         await this.fetchCeloExchangeRate(token);
@@ -113,8 +116,12 @@ export class SdkCelo implements ISdk {
         true
       );
       return exchangeRate.exchangeRateNum;
+    } else {
+      const bridgedToken = getTokenFromList(symbol, this.chainId);
+      const UniSdkV3 = new SdkV3(this.chainId);
+      const price = await UniSdkV3.getTokenPrice(bridgedToken.symbol, 'cUSD');
+      return price;
     }
-    return 0;
   }
 
   async getTokenPrice(symbol: string, baseSymbol: string): Promise<number> {
