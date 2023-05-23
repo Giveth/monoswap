@@ -36,7 +36,6 @@ export default class SdkV2 implements ISdk {
       case CHAIN_ID.MAINNET:
       case CHAIN_ID.ROPSTEN:
       case CHAIN_ID.POLYGON:
-      case CHAIN_ID.CELO:
         this.sdk = UniSdk;
         break;
       case CHAIN_ID.XDAI:
