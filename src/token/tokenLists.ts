@@ -1373,13 +1373,13 @@ const etcTokenList: Token[] = [
   {
     chainId: 61,
     address: '0x82a618305706b14e7bcf2592d4b9324a366b6dad',
-    symbol: 'ETC',
+    symbol: 'WETC',
     name: 'Wrapped ETC',
     decimals: 18,
   },
   {
     chainId: 61,
-    address: '0x88d8c3dc6b5324f34e8cf229a93e197048671abd',
+    address: '0xB4F5b038490656983AA6869D229eFA994C495b0E',
     symbol: 'HEBE',
     name: 'Hebe Swap',
     decimals: 18,
@@ -1390,6 +1390,13 @@ const etcTokenList: Token[] = [
     symbol: 'USDT',
     name: 'Tether',
     decimals: 6,
+  },
+  {
+    chainId: 61,
+    address: '0xb12c13e66ade1f72f71834f2fc5082db8c091358',
+    symbol: 'BUSD',
+    name: 'Binance Pegged USD',
+    decimals: 18,
   },
 ];
 

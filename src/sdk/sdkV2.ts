@@ -1,7 +1,7 @@
 import * as UniSdk from '@uniswap/sdk';
 import * as HoneySdk from 'honeyswap-sdk';
 import * as PancakeSdk from '@pancakeswap-libs/sdk';
-import * as EtcSwapSdk from 'etcswap-sdk';
+import * as HebeSwapSdk from 'hebeswap_sdk';
 import {
   CHAIN_ID,
   getETHisETHPrice,
@@ -46,7 +46,7 @@ export default class SdkV2 implements ISdk {
         this.sdk = PancakeSdk;
         break;
       case CHAIN_ID.ETC:
-        this.sdk = EtcSwapSdk;
+        this.sdk = HebeSwapSdk;
         break;
       default:
         throw new Error(`${chainId} is unsupported`);
@@ -180,7 +180,6 @@ export default class SdkV2 implements ISdk {
         const token = await this.getSwapToken(
           getTokenFromList(symbol, this.chainId)
         );
-        console.log({ token });
         return this.getPrice(pair, token);
       } else {
         const nowStamp = Date.now();
