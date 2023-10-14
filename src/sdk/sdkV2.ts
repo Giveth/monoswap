@@ -1,6 +1,7 @@
 import * as UniSdk from '@uniswap/sdk';
 import * as HoneySdk from 'honeyswap-sdk';
 import * as PancakeSdk from '@pancakeswap-libs/sdk';
+import * as EtcSwapSdk from 'etcswap-sdk';
 import {
   CHAIN_ID,
   getETHisETHPrice,
@@ -43,6 +44,9 @@ export default class SdkV2 implements ISdk {
         break;
       case CHAIN_ID.GOERLI:
         this.sdk = PancakeSdk;
+        break;
+      case CHAIN_ID.ETC:
+        this.sdk = EtcSwapSdk;
         break;
       default:
         throw new Error(`${chainId} is unsupported`);
@@ -131,7 +135,6 @@ export default class SdkV2 implements ISdk {
   async getPair(token0, token1) {
     const provider = getProvider(this.chainId);
     const { Fetcher } = this.sdk;
-
     return await Fetcher.fetchPairData(token0, token1, provider);
   }
 
@@ -171,11 +174,13 @@ export default class SdkV2 implements ISdk {
       if (isXDAIisXDAI(symbol, baseSymbol)) return 1;
 
       const pair = await this.getPairFromSymbols(symbol, baseSymbol);
-
+      // (Mohammad) Look here, we're getting a
+      // getReserves() problem when trying to get the pair
       if (pair) {
         const token = await this.getSwapToken(
           getTokenFromList(symbol, this.chainId)
         );
+        console.log({ token });
         return this.getPrice(pair, token);
       } else {
         const nowStamp = Date.now();
@@ -206,7 +211,6 @@ export default class SdkV2 implements ISdk {
       throw Error(`BaseSymbol ${baseSymbol} not found in our token list`);
 
     if (token.address === baseToken.address) return 1;
-
     try {
       return this.getPair(token, baseToken);
     } catch (e) {

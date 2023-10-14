@@ -48,6 +48,12 @@ export function getProvider(network: number) {
           `https://celo-alfajores.infura.io/v3/${INFURA_ID}`
       );
     }
+    case CHAIN_ID.ETC: {
+      const customETCMainnetRpcNode = config
+        .get('ETC_MAINNET_NODE_HTTP_URL')
+        ?.toString();
+      return new ethers.providers.JsonRpcProvider(customETCMainnetRpcNode);
+    }
   }
   return new ethers.providers.InfuraProvider(network, INFURA_ID);
 }

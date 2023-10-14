@@ -11,8 +11,10 @@ const envVarConfis: EnvVarConfig[] = [
   { key: 'XDAI_NODE_HTTP_URL', required: true },
   { key: 'POLYGON_MAINNET_NODE_HTTP_URL', required: false },
   { key: 'OPTIMISM_NODE_HTTP_URL', required: false },
+  { key: 'OPTIMISM_GOERLI_NODE_HTTP_URL', required: false },
   { key: 'CELO_MAINNET_NODE_HTTP_URL', required: false },
   { key: 'CELO_ALFAJORES_NODE_HTTP_URL', required: false },
+  { key: 'ETC_MAINNET_NODE_HTTP_URL', required: false },
 ];
 
 interface EnvVar {
