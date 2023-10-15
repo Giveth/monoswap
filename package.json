@@ -1,6 +1,6 @@
 {
   "name": "@giveth/monoswap",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "A single SDK that wraps the uniswap SDK, the 1hive honeyswap SDK, and pancakeswap SDK.",
   "main": "dist/index.js",
   "repository": {
@@ -15,6 +15,7 @@
     "axios": "^1.3.4",
     "dotenv": "^8.2.0",
     "ethers": ">=5.7.2 <6",
+    "hebeswap_sdk": "^0.0.9",
     "honeyswap-sdk": "^1.0.0"
   },
   "devDependencies": {
@@ -38,9 +39,11 @@
   "scripts": {
     "test": "mocha test/*.test.ts",
     "test:mainnet": "mocha test/mainnet.test.ts",
+    "test:gnosis": "mocha test/gnosis.test.ts",
     "test:polygon": "mocha test/polygon.test.ts",
     "test:optimism": "mocha test/optimism.test.ts",
     "test:celo": "mocha test/celo.test.ts",
+    "test:etc": "mocha test/etc.test.ts",
     "test:price": "mocha test/price.spec.ts",
     "tp": "mocha test/pair.spec.ts",
     "bp": "tsc && tsc-alias && npm publish"

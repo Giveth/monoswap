@@ -14,6 +14,7 @@ export enum CHAIN_ID {
   POLYGON = 137,
   CELO = 42220,
   ALFAJORES = 44787,
+  ETC = 61,
 }
 
 export interface ISdk {
@@ -30,6 +31,7 @@ export class SdkV2Factory {
         case CHAIN_ID.MAINNET:
         case CHAIN_ID.XDAI:
         case CHAIN_ID.BSC:
+        case CHAIN_ID.ETC:
         case CHAIN_ID.GOERLI:
         case CHAIN_ID.KOVAN:
         default:
@@ -60,6 +62,7 @@ export class SdkFactory {
       case CHAIN_ID.MAINNET:
       case CHAIN_ID.XDAI:
       case CHAIN_ID.BSC:
+      case CHAIN_ID.ETC:
       case CHAIN_ID.GOERLI:
       case CHAIN_ID.KOVAN:
         return SdkV2Factory.getSdkV2(chainId);

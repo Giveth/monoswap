@@ -1369,6 +1369,37 @@ const celoTokenList: Token[] = [
   },
 ];
 
+const etcTokenList: Token[] = [
+  {
+    chainId: 61,
+    address: '0x82a618305706b14e7bcf2592d4b9324a366b6dad',
+    symbol: 'WETC',
+    name: 'Wrapped ETC',
+    decimals: 18,
+  },
+  {
+    chainId: 61,
+    address: '0xB4F5b038490656983AA6869D229eFA994C495b0E',
+    symbol: 'HEBE',
+    name: 'Hebe Swap',
+    decimals: 18,
+  },
+  {
+    chainId: 61,
+    address: '0xc9baa8cfdde8e328787e29b4b078abf2dadc2055',
+    symbol: 'USDT',
+    name: 'Tether',
+    decimals: 6,
+  },
+  {
+    chainId: 61,
+    address: '0xb12c13e66ade1f72f71834f2fc5082db8c091358',
+    symbol: 'BUSD',
+    name: 'Binance Pegged USD',
+    decimals: 18,
+  },
+];
+
 export const allTokens: Token[] = [
   ...cmc200.tokens,
   ...ropstenTokenList,
@@ -1376,6 +1407,7 @@ export const allTokens: Token[] = [
   ...polygonTokenList,
   ...optimismTokenList,
   ...celoTokenList,
+  ...etcTokenList,
 ];
 
 // let tokenList
